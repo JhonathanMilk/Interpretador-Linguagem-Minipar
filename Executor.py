@@ -39,7 +39,7 @@ def execute_stmt(stmt):
         symbol_table[var_name] = var_value
 
     elif stmt[0] == 'OUTPUT':
-        #print("aqui: ", stmt)
+        #print("aqui: ", stmt[1])
         if isinstance(stmt[1], tuple):
             for v in stmt [1]:
                 execute_output(v)
@@ -179,7 +179,7 @@ def send_data(host, port, data):
 
 
 def receive_data(host, port):
-    print(f"host: {host} \nport: {port}")
+    #print(f"host: {host} port: {port}")
     # Cria um socket TCP
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     

@@ -55,9 +55,9 @@ def p_output_args(p):
     '''output_args : expr
                    | output_args COMMA expr'''
     if len(p) == 2:
-        p[0] = p[1]
+        p[0] = (p[1],)
     else:
-        p[0] = (p[1], p[3])
+        p[0] = p[1] + (p[3],)
 
 def p_stmts(p):
     '''stmts : stmt

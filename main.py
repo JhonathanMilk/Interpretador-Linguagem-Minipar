@@ -11,7 +11,7 @@ def read_program_from_file(file_path):
         program = file.read()
     return program
 
-
+5.95
 def main():
     if len(sys.argv) < 2:
         print("Uso: python main.py <nome_do_program.mp>")
