@@ -1,0 +1,3 @@
+#!/bin/bash
+python3 /home/jhonathanmilk/interpretador-minipar/main.py "$@"
+
