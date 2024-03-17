@@ -5,7 +5,7 @@ Projeto desenvolvido para a disciplina de Compiladores <p>
 
 # Instalação de dependências
 É obrigatório ter o [Python](https://www.python.org/) instalado.<p>
-Deve-se instalar a biblioteca [Ply](https://www.dabeaz.com/ply/ply.html). Comando para instalação:
+Deve-se instalar a biblioteca [PLY](https://www.dabeaz.com/ply/ply.html). Comando para instalação:
 ```sh
 pip install ply
 ```
