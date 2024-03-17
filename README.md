@@ -50,7 +50,7 @@ minipar program2.mp
 ```
 Lembre-se de que essas configurações não são permanentes e, ao fechar o terminal, elas não funcionarão mais, logo você precisará refazer o processo. No entanto, você pode usar a Maneira 3 a seguir para aplicar as configurações permanentemente e poder executar os programas minipar em qualquer diretório usando o comando `minipar`.
 ### Maneira 3
-***Passo 1:*** Execute o Passo 1 realizado na Maneira 2. <p>
+***Passo 1:*** Execute o Passo 1 que fizemos na [Maneira 2](https://github.com/JhonathanMilk/Interpretador-Linguagem-Minipar/tree/main?tab=readme-ov-file#maneira-2). <p>
 ***Passo 2:*** Adicione o diretório onde está o arquivo `minipar` ao PATH. Para fazer isso, edite o arquivo `.bashrc` (script de inicialização do shell Bash que configura o ambiente do terminal) usando qualquer editor de texto. Neste exemplo, usaremos o nano. Então no terminal execute o seguinte comando:
 ```nano ~/.bashrc
 ```
