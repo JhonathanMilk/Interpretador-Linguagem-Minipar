@@ -64,7 +64,7 @@ export PATH=/seu/endereco/aqui:$PATH
 ```sh
 export PATH=/home/usuario/downloads/interpretador-linguagem-minipar:$PATH
 ```
-Salve as alterações no arquivo e saia do editor. No caso do nano, pressione `Ctrl+O` para salvar, `Enter` para confirmar e, em seguida, `Ctrl+X` para sair. <p>
+Salve as alterações no arquivo e saia do editor. No caso do nano, pressione <kbd>Ctrl</kbd> + <kbd>O</kbd> para salvar, <kbd>Enter</kbd> para confirmar e, em seguida, <kbd>Ctrl</kbd> + <kbd>X</kbd> para sair. <p>
 ***Passo 3:*** Reinicie o terminal (feche e abra novamente). O comando minipar deve ser reconhecido no terminal. Para testar, digite no terminal `which minipar` e este comando retornará o endereço completo até o interpretador MiniPar<p>
 ***Passo 4:*** Execute os programas.mp em qualquer diretório apenas executando o comando:
 ```sh
