@@ -13,7 +13,7 @@ pip install ply
 
 Antes de tudo, faça o download do [interpretador MiniPar](https://github.com/JhonathanMilk/Interpretador-Linguagem-Minipar/archive/refs/heads/main.zip) para o seu computador, extraia o ZIP na pasta de sua preferência e, em seguida, siga uma das maneiras descritas abaixo para executar programas com o interpretador MiniPar.
 ### Maneira 1
-Abra o terminal, navegue até a pasta do projeto e digite o seguinte comando:
+Abra o terminal, navegue até a pasta do projeto e digite o seguinte comando para executar o programa:
 ```sh
 <Versão_Python> main.py <nome_do_programa.mp>
 ```
