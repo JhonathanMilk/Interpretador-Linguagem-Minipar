@@ -74,8 +74,9 @@ minipar <nome_do_programa.mp>
 ```sh
 minipar program2.mp
 ```
-*Obs.: Se a etapa anterior não funcionar, pode haver um problema com o arquivo `minipar`. Nesse caso, é necessário torná-lo executável. Para fazer isso, usando o terminal navegue até o diretório onde o arquivo está localizado (caso ainda não esteja) e execute o seguinte comando:*
-```sh
-chmod x+ minipar
-```
-*Verifique novamente se os comandos de execução `minipar <nome_do_programa.mp>` funcionam.*
+> [!NOTE]
+>*Obs.: Se a etapa anterior não funcionar, pode haver um problema com o arquivo `minipar`. Nesse caso, é necessário torná-lo executável. Para fazer isso, usando o terminal navegue até o diretório onde o arquivo está localizado (caso ainda não esteja) e execute o seguinte comando:*
+>```sh
+>chmod x+ minipar
+>```
+> *Verifique novamente se os comandos de execução `minipar <nome_do_programa.mp>` funcionam.*
