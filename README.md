@@ -52,7 +52,8 @@ Lembre-se de que essas configurações não são permanentes e, ao fechar o term
 ### Maneira 3
 ***Passo 1:*** Execute o Passo 1 que fizemos na [Maneira 2](#maneira-2). <p>
 ***Passo 2:*** Adicione o diretório onde está o arquivo `minipar` ao PATH. Para fazer isso, edite o arquivo `.bashrc` (script de inicialização do shell Bash que configura o ambiente do terminal) usando qualquer editor de texto. Neste exemplo, usaremos o nano. Então no terminal execute o seguinte comando:
-```nano ~/.bashrc
+```sh
+nano ~/.bashrc
 ```
 Vá até a última linha do arquivo bashrc e adicione o caminho até o diretório onde está o arquivo `minipar`:
 ```sh
