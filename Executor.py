@@ -5,20 +5,18 @@ has_error = False
 symbol_table = {}
 channels = {}
 
-# Funções de execução
+# Funções de execução para cada tipo de instrução
 def execute_stmt(stmt):     
     #time.sleep(1)
-    #print("stmt: ", stmt[0])
     if stmt[0] == 'SEQ':
+        #para cada instrução no bloco SEQ, execute 
         for s in stmt[1]:
-            #print(s)
-            #print("SEQ")
             execute_stmt(s)
+    
     elif stmt[0] == 'PAR':
         threads = []
+        #para cada instrução no bloco PAR, coloque tem uma thread e execute.
         for s in stmt[1]:
-            #print(s)
-            #print("PAR")
             thread = threading.Thread(target=execute_stmt, args=(s,))
             threads.append(thread)
             thread.start()
@@ -39,41 +37,33 @@ def execute_stmt(stmt):
         symbol_table[var_name] = var_value
 
     elif stmt[0] == 'OUTPUT':
-        #print("aqui: ", stmt[1])
         if isinstance(stmt[1], tuple):
             for v in stmt [1]:
                 execute_output(v)
         else:
             execute_output(stmt[1])
     
+    # Caso seja uma atribuição...
     elif stmt[0] == '=':
         var_name = stmt[1]
         value = stmt[2]
 
-        #print("var_name: ", var_name)
-        #print("value: ", value)
-        
+        # Atribuição com input
         if (value == "INPUT"):        #Se for um input tem que chamar o Elif 'INPUT' em execute_stmt para pegar o input
             value = execute_stmt((value, var_name))     
-            # print("value2: ", value)
         
-        #elif isinstance(value, tuple) and value[0] in channels:         #para atribuições de channel: ex: y = calc.receive
-        #    value = execute_stmt(value)
-
-        #elif isinstance(value, tuple):  # Se for uma expressão
-        #    value = evaluate_expr(value)
-        #    symbol_table[var_name] = value
+        # Qualquer outra atribuição, tipo: x = a, x = 15, x = a + b, x = "ola mundo"
         else:
             value = evaluate_expr(value)
             symbol_table[var_name] = value
 
-            
+    # Declaração do canal, apenas salva o canal na tabela de canais, salvando os computadores envolvidos.        
     elif stmt[0] == "C_CHANNEL":
         channels[stmt[1]] = (stmt[2], stmt[3])
 
+    # quando for uma instrução de uso do canal de comunicação
     elif not isinstance(stmt[0], tuple) and stmt[0] in channels:
-        #print(symbol_table)
-        #print(stmt)
+ 
         if stmt[1] == 'SEND':
             channel_name = stmt[0]
             channel = channels.get(channel_name)
@@ -89,7 +79,6 @@ def execute_stmt(stmt):
             channel_name = stmt[0]
             channel = channels.get(channel_name)
             if channel:
-#                print("stringRec: ", stringRec)
                 if (len(stmt) == 6):
                     stringRec = receive_data(channel[1], 9999)
                     operation, value1, value2, result = stringRec.split(",")
@@ -100,23 +89,25 @@ def execute_stmt(stmt):
                 elif (len(stmt) == 3):
                     stringRec = receive_data(channel[1], 9998)
                     symbol_table[stmt[2]] = stringRec
-        
+
+    # loop até executar todos blocos de códigos, com isso, permite que tenhamos vários blocos SEQ e PAR num mesmo código
+    # Todos executando conforme as suas regras
     elif isinstance(stmt, tuple):
         for s in stmt:
             execute_stmt(s)
 
+# executa todos tipos de saída, numerico e strings...
 def execute_output(v):
-    #print("v: ", v)
     var_name = v
     var_value = symbol_table.get(var_name, None)
-    if var_value is not None:
+    if var_value is not None:           #Se está na tabela de símbolos...
         formatted_output = var_value
-        print(formatted_output, end='')
+        print(formatted_output, end='')     #end='' garante que não pule linha automaticamente
     else:
-        #print(f"Variável '{var_name}' não encontrada na tabela de símbolos")
-        formatted_output = var_name.replace("\\n", "\n")
+        formatted_output = var_name.replace("\\n", "\n")    #substitui qualquer \n na string pela quebra de linha real
         print(formatted_output, end='')
 
+#executa expressões booleanas
 def execute_bool(expr):
     if isinstance(expr, tuple):
 
@@ -126,8 +117,6 @@ def execute_bool(expr):
             left = symbol_table.get(left, 0)  # Obter o valor da variável ou 0 se não existir
         if right in symbol_table:
             right = symbol_table.get(right, 0)  # Obter o valor da variável ou 0 se não existir
-        
-        #print(left, op, right)
             
         if op == '<':
             return evaluate_expr(left) < evaluate_expr(right)
@@ -143,7 +132,9 @@ def execute_bool(expr):
             return evaluate_expr(left) != evaluate_expr(right)
     return False
 
+#Avalia as expressões aritméticas
 def evaluate_expr(expr):
+    #se for um inteiro ou sinal de uma operação aritmética simples não precisa calcular nada, então apenas retorna o próprio valor
     if isinstance(expr, int) or expr in {'-', '+', '*', '/'}:
         return expr
     elif isinstance(expr, tuple):
@@ -199,7 +190,6 @@ def receive_data(host, port):
             data = client_socket.recv(1024)
             if not data:
                 break
-            #print(f"Dados recebidos: {data.decode()}")
             
             # Retorna a string recebida
             return data.decode()
