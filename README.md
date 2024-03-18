@@ -11,7 +11,14 @@ pip install ply
 ```
 # Instalação do MiniPar e execução de programas
 
-Antes de tudo, faça o download do [interpretador MiniPar](https://github.com/JhonathanMilk/Interpretador-Linguagem-Minipar/archive/refs/heads/main.zip) para o seu computador, extraia o ZIP na pasta de sua preferência e, em seguida, siga uma das maneiras descritas abaixo para executar programas com o interpretador MiniPar.
+Antes de tudo, obtenha o Minipar através do método 1 ou 2 abaixo:
+1. Faça o download do [interpretador MiniPar](https://github.com/JhonathanMilk/Interpretador-Linguagem-Minipar/archive/refs/heads/main.zip) para o seu computador e extraia o ZIP na pasta de sua preferência.<p>
+2. Faça um clone do repositório para seu computador, no terminal dê o comando:
+  ```sh
+  git clone https://github.com/JhonathanMilk/Interpretador-Linguagem-Minipar.git
+  ```
+
+Em seguida, siga uma das maneiras descritas abaixo para executar programas com o interpretador MiniPar.
 ### Maneira 1
 Abra o terminal, navegue até a pasta do projeto e digite o seguinte comando para executar o programa:
 ```sh
@@ -79,4 +86,26 @@ minipar program2.mp
 >```sh
 >chmod x+ minipar
 >```
-> *Verifique novamente se os comandos de execução `minipar <nome_do_programa.mp>` funcionam.*
+> *Verifique novamente se o comando de execução `minipar <nome_do_programa.mp>` funciona.*<p>
+
+# Exemplo de programa na linguagem MiniPar:
+### Programa:
+```py
+SEQ
+x = 12
+i = 0
+
+while (i < x){
+  Output (i, " ") #Imprime i e dar um espaço
+  if (i == 5){
+    Output ("\n")  #Quebra de linha
+  }
+  i = i+1   #Incrementa contador
+}
+Output ("\n")
+```
+### Saída:
+```
+0 1 2 3 4 5 
+6 7 8 9 10 11 
+```
