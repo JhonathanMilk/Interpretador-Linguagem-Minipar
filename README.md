@@ -1,7 +1,6 @@
 # Interpretador MiniPar
 
 Projeto desenvolvido para a disciplina de Compiladores <p>
-**Aluno:** Jonatan Leite Alves
 
 # Instalação de dependências
 É obrigatório ter o [Python](https://www.python.org/) instalado.<p>
